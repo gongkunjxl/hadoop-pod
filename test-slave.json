@@ -1,0 +1,122 @@
+{
+  "kind": "Pod",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hadoop-slave",
+    "creationTimestamp": null,
+    "labels": {
+      "name": "hadoop-slave"
+    }
+  },
+  "spec": {
+    "containers": [
+      {
+        "name": "hadoop-slave",
+        "image": "172.30.7.23:5000/openshift/hadoop-slave:0.1.0",
+	"command": ["bash","-c","export JOIN_IP=$HADOOP_MASTER_SERVICE_HOST;/root/start-ssh-serf.sh ; ssh -o StrictHostKeyChecking=no $JOIN_IP \"/root/config.sh;/root/restart.sh\"; sleep 365d"],
+        "ports": [
+          {
+            "containerPort": 22,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 7373,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 7946,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 9000,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 50010,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 50020,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 50070,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 50075,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 50090,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 50475,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 8030,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 8031,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 8032,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 8033,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 8040,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 8042,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 8060,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 8088,
+            "protocol": "TCP"
+          },
+          {
+            "containerPort": 50060,
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {},
+        "volumeMounts": [
+          {
+            "name":"tmp",
+            "mountPath":"/tmp"
+          }
+        ],
+        "terminationMessagePath": "/dev/termination-log",
+        "imagePullPolicy": "IfNotPresent",
+        "capabilities": {},
+        "securityContext": {
+          "capabilities": {},
+          "privileged": true
+        }
+      }
+    ],
+    "volumes": [
+      {
+        "name":"tmp",
+        "emptyDir": {}
+      }
+    ],
+    "restartPolicy": "Always",
+    "dnsPolicy": "ClusterFirst",
+    "serviceAccount": ""
+  },
+  "status": {}
+}
