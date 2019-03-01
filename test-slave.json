@@ -2,10 +2,9 @@
   "kind": "Pod",
   "apiVersion": "v1",
   "metadata": {
-    "name": "hadoop-slave",
+    "name": "hadoop-slave-01",
     "creationTimestamp": null,
     "labels": {
-      "name": "hadoop-slave"
     }
   },
   "spec": {
