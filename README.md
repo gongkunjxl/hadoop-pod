@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Hello, OpenShift!
 -----------------
 
@@ -48,3 +49,7 @@ If you need to rebuild the image:
     $ go build -tags netgo   # avoid dynamic linking (we want a static binary)
     $ mv hello-openshift bin
     $ docker build -t docker.io/openshift/hello-openshift .
+=======
+# hadoop-pod
+hadoop cluster pod test 
+>>>>>>> 8855e2f636b4e75602179a9136d121da8ec68151
